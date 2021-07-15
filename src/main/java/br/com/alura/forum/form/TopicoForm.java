@@ -1,12 +1,22 @@
 package br.com.alura.forum.form;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+
 import br.com.alura.forum.modelo.Curso;
 import br.com.alura.forum.modelo.Topico;
 import br.com.alura.forum.repository.CursoRepository;
 
 public class TopicoForm {
-	
+
+	@NotBlank
+	@Length(min = 3, max = 10, message = "Por favor, informar um texto de 3 a 10 caracteres.")
 	private String titulo;
+	@NotNull
+	@NotEmpty
 	private String mensagem;
 	private String nomeCurso;
 	

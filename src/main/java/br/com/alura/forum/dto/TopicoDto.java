@@ -1,9 +1,8 @@
 package br.com.alura.forum.dto;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+
+import org.springframework.data.domain.Page;
 
 import br.com.alura.forum.modelo.Topico;
 
@@ -38,15 +37,12 @@ public class TopicoDto {
 		return dataCriacao;
 	}
 
-	public static List<TopicoDto> convertList(List<Topico> topicos) {
+	public static Page<TopicoDto> convertList(Page<Topico> topicos) {
 		if (topicos == null) {
-			return new ArrayList<TopicoDto>();
+			return null;
 		}
 
-		return topicos
-				.stream()
-				.map(TopicoDto::new)
-				.collect(Collectors.toList());
+		return topicos.map(TopicoDto::new);
 	}
 
 }
